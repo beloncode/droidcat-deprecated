@@ -1,0 +1,15 @@
+[log]
+filename="droidcat.log"
+[main]
+max_thread=4
+use_max_cpu=true
+config_filename="settings.toml"
+
+[input]
+default_input="droidcat.apk"
+
+[output]
+unknown_output=["app-out", "out", "package"]
+
+[plugins]
+[modules]
