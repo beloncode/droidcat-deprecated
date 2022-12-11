@@ -1,5 +1,6 @@
 
 [main]
+default_scenario=0
 max_thread=4
 use_max_cpu=true
 config_filename="settings.toml"

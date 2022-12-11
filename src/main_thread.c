@@ -47,12 +47,12 @@ i32 droidcat_deinit(droidcat_ctx_t* droidcat_ctx)
 
 typedef enum scenario_mode
 {
-  DFT_PROG_STARTUP = 0
+  DEF_PROG_STARTUP = 0
 } scenario_mode_e;
 
 i32 user_options_init(int save_argc, char** save_argv, char** save_env, int scenario, droidcat_ctx_t* droidcat_ctx)
 {
-  static const user_options_t s_default_SCENE_00 = {
+  static const user_options_t s_def_scene_00 = {
     .interactive_mode = false, 
     .display_welcome = true
   };
@@ -70,7 +70,7 @@ i32 user_options_init(int save_argc, char** save_argv, char** save_env, int scen
 
   switch (scenario)
   {
-  case DFT_PROG_STARTUP: l_copy_default = &s_default_SCENE_00; break;
+  case DEF_PROG_STARTUP: l_copy_default = &s_def_scene_00; break;
   }
 
   if (l_copy_default == NULL) return -1;
