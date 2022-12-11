@@ -6,7 +6,7 @@ output_filename = $output:1 # same as $output
 %unpack% into $input_filename $output_filename
 %disas% dex $output_filename/*.dex
 
-; Disas ELF shared objects files from lib subdirectory
+; Disassemble ELF shared objects files from the lib subdirectory
 
 if exist $input_filename/lib then:
     %disas% elf $output_filename/lib/*/*.so
