@@ -16,8 +16,6 @@ add_compile_definitions(
 )
 
 add_executable(droidcat)
-target_sources(droidcat PRIVATE
-    src/main_thread.c
-)
+add_subdirectory(src)
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/default/ DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/runtime)
