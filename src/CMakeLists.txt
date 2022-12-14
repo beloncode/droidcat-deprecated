@@ -1,5 +1,4 @@
 
-target_sources(droidcat PRIVATE 
-    local_thread.c
-    core/thread_pool.c
+target_sources(droidcat PRIVATE
+    main_thread.c
 )
