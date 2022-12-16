@@ -1,3 +1,5 @@
+#include <stdarg.h>
+
 #if defined(__unix__)
     #include <unistd.h>
     #include <errno.h>
@@ -6,7 +8,7 @@
 typedef signed int i32;
 
 _Static_assert(sizeof (i32) == 4, "Sizeof integer is different from 4,"
-    " this may lead for various errors and undefined behaviors");
+    " this may lead to various errors and undefined behaviors");
 
 typedef enum cerberus_level {
     CERBERUS_LE_SUCCESS,
@@ -46,17 +48,23 @@ typedef struct cerberus_msg_info {
 
 } cerberus_msg_info_t;
 
+typedef i32 (*cerberus_event_function_t)(const i32, void*, const char*, const size_t);
+
+typedef struct cerberus_ctx {
+    cerberus_event_function_t* event_handler;
+} cerberus_ctx_t;
+
 typedef struct droidcat_ctx {
+    cerberus_ctx_t* main_cerberus_ctx;
 
 } droidcat_ctx_t;
 
-i32 main_cerberus([[maybe_unused]] const i32 event_level, [[maybe_unused]] droidcat_ctx_t* droidcat_ctx, 
-    [[maybe_unused]] const char* fmt_local, ...) {
-    
+i32 cerberus_default_event([[maybe_unused]] const i32 event_id, [[maybe_unused]] droidcat_ctx_t* droidcat_ctx_t, 
+    [[maybe_unused]] const char* message_terminator, [[maybe_unused]] const size_t message_len) {
     return 0;
 }
 
-i32 cerberus_to_main([[maybe_unused]] const i32 event_id, [[maybe_unused]] droidcat_ctx_t* droidcat_ctx_t, 
+i32 main_event_rl([[maybe_unused]] const i32 event_id, [[maybe_unused]] void* droidcat_ctx_t, 
     [[maybe_unused]] const char* message_terminator, [[maybe_unused]] const size_t message_len) {
 
     return 0;
@@ -64,7 +72,10 @@ i32 cerberus_to_main([[maybe_unused]] const i32 event_id, [[maybe_unused]] droid
 
 i32 cerberus_prepare([[maybe_unused]] const cerberus_msg_info_t* msg_info, [[maybe_unused]] droidcat_ctx_t* droidcat_ctx, 
     [[maybe_unused]] const char* restrict format, ...) {
+    va_list va_prepare;
+    va_start(va_prepare, format);
 
+    va_end(va_prepare);
     return 0;
 }
 
